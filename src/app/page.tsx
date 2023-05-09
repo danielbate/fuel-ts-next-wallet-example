@@ -1,6 +1,11 @@
 import Image from 'next/image'
+import { Wallet, Provider } from 'fuels';
 
 export default function Home() {
+  const provider = new Provider('https://beta-3.fuel.network/graphql');
+  const wallet = Wallet.fromPrivateKey(process.env.PRIVATE_KEY as string, provider);
+  console.log('wallet address', wallet.address);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
